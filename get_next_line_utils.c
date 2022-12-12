@@ -6,7 +6,7 @@
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 18:23:44 by amdemuyn          #+#    #+#             */
-/*   Updated: 2022/12/02 18:33:21 by amdemuyn         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:55:12 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlen(char *s)
 	i = 0;
 	if (!s)
 		return (0);
-	while (s[i] != '\0')
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -98,6 +98,7 @@ char	*ft_next_line(char *str)
 	char	*stash;
 
 	i = 0;
+	j = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (!str[i])
@@ -109,7 +110,6 @@ char	*ft_next_line(char *str)
 	if (!stash)
 		return (NULL);
 	i++;
-	j = 0;
 	while (str[i])
 		stash[j++] = str[i++];
 	stash[j] = '\0';

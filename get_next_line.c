@@ -6,7 +6,7 @@
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:25:50 by amdemuyn          #+#    #+#             */
-/*   Updated: 2022/12/02 18:32:02 by amdemuyn         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:52:14 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ char	*ft_read(int fd, char *str)
 	if (!buf)
 		return (NULL);
 	bytes = 1;
-	while (!ft_strchr(str, '\n') && bytes != '\0')
+	while (!ft_strchr(str, '\n') && bytes != 0)
 	{
 		bytes = read(fd, buf, BUFFER_SIZE);
 		if (bytes == -1)
 		{
 			free(buf);
+			free(str);
 			return (NULL);
 		}
 		buf[bytes] = '\0';
@@ -42,7 +43,7 @@ char	*get_next_line(int fd)
 	static char	*str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	str = ft_read(fd, str);
 	if (!str)
 		return (NULL);
@@ -56,7 +57,7 @@ char	*get_next_line(int fd)
 	int	fd;
 	char	*line;
 
-	fd = open("test2.txt", O_RDONLY);
+	fd = open("read_error.txt", O_RDONLY);
 	line = get_next_line(fd);
 	printf("%s", line);
 	free(line);
