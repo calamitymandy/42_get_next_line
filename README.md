@@ -1,5 +1,7 @@
 # get_next_line
 
+Project from 42 school
+
 • Repeated calls to your get_next_line() function should read the text file pointed to by the file descriptor, one line at a time.
 
 • The function should return the line that was read. If there is nothing else to read or if an error occurred, it should return NULL.
